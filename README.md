@@ -1,4 +1,4 @@
-#MeshGenerator
+#MeshGenerator:
 A VB project that generates a 2D mesh of delaunay triangles around objects.
 
 I started this project many years ago as a way to get back up to speed with programming. I chose this particular project because I had come across this type of mesh generation
