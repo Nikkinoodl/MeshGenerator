@@ -92,6 +92,4 @@ Simplify and refine the InCircle function within Delaunay.vb
 
 Use OpenCL to speed up calculations.
 
-Write mesh to an external file.
-
-Can definitions of configurations for Delaunay, Triangle Splitter be made in one location. As types?
+Write mesh to an external file or database.
