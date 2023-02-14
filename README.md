@@ -1,5 +1,5 @@
 #MeshGenerator:
-This Windows Forms application is a VB project that generates a 2D mesh of delaunay triangles around objects.
+This Windows Forms/VB application generates a 2D mesh of delaunay triangles around objects.
 
 I started this project many years ago as a way to refresh and update my programming skills. I had previously used this type of mesh generation
 in Computational Fluid Dynamics programs when I was an engineer at Rolls-Royce, but didn't know anything about how it was done. So, it became a two-fold
