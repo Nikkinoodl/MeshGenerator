@@ -1,10 +1,8 @@
 ﻿Imports MeshGeneration.Data
+Imports MeshGeneration.Models
 
 Namespace Services
     Public Class NodeCleaner : Implements INodeCleaner
-
-        Private n1, n2, n3, np, x1, x2, x3, y1, y2, y3, xp, yp As Double
-        Private s1, s2, s3, b1, b2, b3 As Boolean
 
         Private data As IDataAccessService
 
@@ -16,6 +14,10 @@ Namespace Services
 
         Public Sub CleanOrpanNodes() Implements INodeCleaner.CleanOrphanNodes
             'finds triangles that have an orphan node in the middle of one side and splits them at the orphan node
+
+            Dim n1, n2, n3, np As Integer
+            Dim x1, x2, x3, y1, y2, y3, xp, yp As Double
+            Dim s1, s2, s3, b1, b2, b3 As Boolean
 
             Dim factory As New NodeFactory()
 
@@ -30,10 +32,31 @@ Namespace Services
                 Dim newId = maxId + 1
 
                 'Get node ids for this triangle
-                GetNodeId(t)
+                n1 = data.Trianglelist(t).V1
+                n2 = data.Trianglelist(t).V2
+                n3 = data.Trianglelist(t).V3
 
                 'Get details for each node
-                GetNodeDetails()
+                With data.NodeV(n1).Single
+                    x1 = .X
+                    y1 = .Y
+                    s1 = .Surface   'is it an airfoil node?
+                    b1 = .Boundary ' is it a boundary node?
+                End With
+
+                With data.NodeV(n2).Single
+                    x2 = .X
+                    y2 = .Y
+                    s2 = .Surface   'is it an airfoil node?
+                    b2 = .Boundary ' is it a boundary node?
+                End With
+
+                With data.NodeV(n3).Single
+                    x3 = .X
+                    y3 = .Y
+                    s3 = .Surface   'is it an airfoil node?
+                    b3 = .Boundary ' is it a boundary node?
+                End With
 
                 'check for orphan nodes on l1
                 xp = MidPoint(x2, x3)
@@ -86,38 +109,5 @@ Namespace Services
             Return ((a + b) / 2)
         End Function
 
-        Private Sub GetNodeId(ByVal t As Integer)
-            'Get the node ids of the triangle vertices
-
-            n1 = data.Trianglelist(t).V1
-            n2 = data.Trianglelist(t).V2
-            n3 = data.Trianglelist(t).V3
-
-        End Sub
-
-        Private Sub GetNodeDetails()
-            'Get details for each node
-
-            With data.NodeV(n1).Single
-                x1 = .X
-                y1 = .Y
-                s1 = .Surface   'is it an airfoil node?
-                b1 = .Boundary ' is it a boundary node?
-            End With
-
-            With data.NodeV(n2).Single
-                x2 = .X
-                y2 = .Y
-                s2 = .Surface   'is it an airfoil node?
-                b2 = .Boundary ' is it a boundary node?
-            End With
-
-            With data.NodeV(n3).Single
-                x3 = .X
-                y3 = .Y
-                s3 = .Surface   'is it an airfoil node?
-                b3 = .Boundary ' is it a boundary node?
-            End With
-        End Sub
     End Class
 End Namespace
