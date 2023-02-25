@@ -7,9 +7,9 @@ Namespace Services
         Private s1, s2, s3, b1, b2, b3 As Boolean
 
         'all new nodes, new triangles and replacement triangles are created by the nodefactory
-        Private factory As New NodeFactory()
+        Private ReadOnly factory As New NodeFactory()
 
-        Private data As IDataAccessService
+        Private ReadOnly data As IDataAccessService
 
         Public Sub New(ByVal data As IDataAccessService)
 

@@ -311,5 +311,6 @@ Public Class MainForm
         EventCompletion()
 
     End Sub
+
 #End Region
 End Class

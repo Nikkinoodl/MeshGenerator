@@ -173,7 +173,7 @@ Partial Class MainForm
         Me.Label11.Location = New System.Drawing.Point(19, 294)
         Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(120, 17)
+        Me.Label11.Size = New System.Drawing.Size(115, 16)
         Me.Label11.TabIndex = 24
         Me.Label11.Text = "Smoothing Cycles"
         '
@@ -191,7 +191,7 @@ Partial Class MainForm
         Me.Label10.Location = New System.Drawing.Point(21, 569)
         Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(48, 17)
+        Me.Label10.Size = New System.Drawing.Size(44, 16)
         Me.Label10.TabIndex = 22
         Me.Label10.Text = "Status"
         '
@@ -214,7 +214,7 @@ Partial Class MainForm
         Me.Label9.Location = New System.Drawing.Point(93, 262)
         Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(46, 17)
+        Me.Label9.Size = New System.Drawing.Size(41, 16)
         Me.Label9.TabIndex = 20
         Me.Label9.Text = "Offset"
         '
@@ -224,7 +224,7 @@ Partial Class MainForm
         Me.Label8.Location = New System.Drawing.Point(21, 230)
         Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(116, 17)
+        Me.Label8.Size = New System.Drawing.Size(111, 16)
         Me.Label8.TabIndex = 19
         Me.Label8.Text = "Expansion Power"
         '
@@ -234,7 +234,7 @@ Partial Class MainForm
         Me.Label7.Location = New System.Drawing.Point(59, 198)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(79, 17)
+        Me.Label7.Size = New System.Drawing.Size(75, 16)
         Me.Label7.TabIndex = 18
         Me.Label7.Text = "Node trade"
         '
@@ -244,7 +244,7 @@ Partial Class MainForm
         Me.Label6.Location = New System.Drawing.Point(63, 166)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(75, 17)
+        Me.Label6.Size = New System.Drawing.Size(71, 16)
         Me.Label6.TabIndex = 17
         Me.Label6.Text = "Cell Factor"
         '
@@ -254,7 +254,7 @@ Partial Class MainForm
         Me.Label5.Location = New System.Drawing.Point(63, 134)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(76, 17)
+        Me.Label5.Size = New System.Drawing.Size(72, 16)
         Me.Label5.TabIndex = 16
         Me.Label5.Text = "Cell Height"
         '
@@ -264,7 +264,7 @@ Partial Class MainForm
         Me.Label4.Location = New System.Drawing.Point(95, 70)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(43, 17)
+        Me.Label4.Size = New System.Drawing.Size(42, 16)
         Me.Label4.TabIndex = 15
         Me.Label4.Text = "Scale"
         '
@@ -274,7 +274,7 @@ Partial Class MainForm
         Me.Label3.Location = New System.Drawing.Point(89, 38)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(49, 17)
+        Me.Label3.Size = New System.Drawing.Size(46, 16)
         Me.Label3.TabIndex = 14
         Me.Label3.Text = "Height"
         '
@@ -284,7 +284,7 @@ Partial Class MainForm
         Me.Label2.Location = New System.Drawing.Point(93, 5)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 17)
+        Me.Label2.Size = New System.Drawing.Size(41, 16)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Width"
         '
@@ -358,7 +358,7 @@ Partial Class MainForm
         Me.Label1.Location = New System.Drawing.Point(89, 102)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(51, 17)
+        Me.Label1.Size = New System.Drawing.Size(48, 16)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "Layers"
         '
