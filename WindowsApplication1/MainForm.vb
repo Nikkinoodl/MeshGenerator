@@ -150,7 +150,7 @@ Public Class MainForm
         'initiates refresh of the form and repaint of the GL drawing control
         Me.Refresh()
         GlControl1.Invalidate()
-        StatusMessage(Constants.MsgComplete)
+        StatusMessage(Constants.MSGCOMPLETE)
     End Sub
 
     Private Sub UpdateFarfield()
@@ -180,7 +180,7 @@ Public Class MainForm
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
         'Builds grid around an airfoil
 
-        StatusMessage(Constants.MsgInitialize)
+        StatusMessage(Constants.MSGINITIALIZE)
 
         'pull in any changed farfield values
         UpdateFarfield()
@@ -188,7 +188,7 @@ Public Class MainForm
         'set window drawing size
         UpdateGLSize()
 
-        StatusMessage(Constants.MsgConstruct)
+        StatusMessage(Constants.MSGCONSTRUCT)
 
         'call the logic layer - here we initiate the actual work of building the grid
         'the first line gets the object by type from the container
@@ -205,7 +205,7 @@ Public Class MainForm
     Private Sub Button2_Click(sender As System.Object, e As System.EventArgs) Handles Button2.Click
         'Runs delaunay triangulation on grid
 
-        StatusMessage(Constants.MsgDelaunay)
+        StatusMessage(Constants.MSGDELAUNAY)
 
         'call the logic layer - here we initiate the grid optimization
         'the first line gets the object by type from the container
@@ -219,7 +219,7 @@ Public Class MainForm
     Private Sub Button3_Click(sender As System.Object, e As System.EventArgs) Handles Button3.Click
         'Refines existing grid
 
-        StatusMessage(Constants.MsgDivide)
+        StatusMessage(Constants.MSGDIVIDE)
 
         'pull in any changed farfield values
         UpdateFarfield()
@@ -236,7 +236,7 @@ Public Class MainForm
     Private Sub Button4_Click(sender As System.Object, e As System.EventArgs) Handles Button4.Click
         'perform Laplace smoothing
 
-        StatusMessage(Constants.MsgSmooth)
+        StatusMessage(Constants.MSGSMOOTH)
 
         'pull in any changed farfield values
         UpdateFarfield()
@@ -259,22 +259,22 @@ Public Class MainForm
         If Not (strm Is Nothing) Then
             'insert additionalcode to process the file data here
             strm.Close()
-            MessageBox.Show(Constants.MsgLoaded)
+            MessageBox.Show(Constants.MSGLOADED)
         End If
 
     End Sub
     Private Sub Button5_Click(sender As System.Object, e As System.EventArgs) Handles Button5.Click
         'Runs the open file dialog
 
-        OpenFileDialog1.Title = Constants.DialogTitle
-        OpenFileDialog1.InitialDirectory = Constants.FileLocation
+        OpenFileDialog1.Title = Constants.DIALOGTITLE
+        OpenFileDialog1.InitialDirectory = Constants.FILELOCATION
         OpenFileDialog1.ShowDialog()
 
     End Sub
     Private Sub Button6_Click(sender As System.Object, e As System.EventArgs) Handles Button6.Click
         'Builds grid for an empty space with no airfoil present
 
-        StatusMessage(Constants.MsgInitialize)
+        StatusMessage(Constants.MSGINITIALIZE)
 
         'pull in any changed farfield values
         UpdateFarfield()
@@ -297,7 +297,7 @@ Public Class MainForm
     Private Sub Button7_Click(sender As System.Object, e As System.EventArgs) Handles Button7.Click
         'Redistributes nodes on edges of farfield
 
-        StatusMessage(Constants.MsgRedistribute)
+        StatusMessage(Constants.MSGREDISTRIBUTE)
 
         'pull in any changed farfield values
         'UpdateFarfield()

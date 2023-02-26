@@ -86,7 +86,7 @@ Namespace AppSettings
             End Get
             Set(value As Short)
                 If value < 2 Then
-                    MessageBox.Show(Constants.MsgMinOffset)
+                    MessageBox.Show(MSGMINOFFSET)
                     value = 2
                 End If
                 _offset = value
@@ -98,7 +98,7 @@ Namespace AppSettings
             End Get
             Set(value As Short)
                 If value < 1 Then
-                    MessageBox.Show(Constants.MsgSmoothingCycles)
+                    MessageBox.Show(MSGSMOOTHINGCYCLES)
                     value = 1
                 End If
                 _smoothingcycles = value

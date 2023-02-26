@@ -36,7 +36,7 @@ Namespace Logic
             Try
                 reader.ReadAirfoilNodes(farfield.Filename)
             Catch
-                MsgBox(MsgFileError)
+                MsgBox(MSGFILEERROR)
                 Exit Sub
             End Try
 

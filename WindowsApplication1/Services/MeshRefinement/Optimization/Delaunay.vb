@@ -183,7 +183,7 @@ Namespace Services
 
             'Pre-check for divide by zero condition
             If System.Math.Abs(y1 - y2) < eps And System.Math.Abs(y2 - y3) < eps Then
-                MsgBox(MsgOverlap)
+                MsgBox(MSGOVERLAP)
                 Exit Function
             End If
 

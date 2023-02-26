@@ -14,8 +14,36 @@ Namespace Services
         End Sub
 
         Public Sub SmoothGrid() Implements IGridSmoother.SmoothGrid
-            'takes each node in turn, counts the triangles that contain this node
-            'and re-centers the node in relation to the other nodes of the adjoining triangles
+            'takes each node in turn, finds the triangles that contain this node
+            'and re-centers the node in relation to the nodes of these triangles
+            'using Laplace smoothing
+            '
+            ' new (x, y) coordinates of np become the average (x, y) of A, B, C, D and np
+            '
+            '                                   A
+            '                                  /|\ 
+            '                                 / | \ 
+            '                                /  |  \
+            '                               /   |   \
+            '                              /    |    \
+            '                             /     |     \
+            '                            /      |      \
+            '                           /       |       \
+            '                          /        |        \
+            '                         /         |         \
+            '                      B  --------- np -------- C
+            '                         \         |          /
+            '                          \        |         /
+            '                           \       |        /
+            '                            \      |       /
+            '                             \     |      /
+            '                              \    |     /
+            '                               \   |    /
+            '                                \  |   /
+            '                                 \ |  /  
+            '                                  \| / 
+            '                                   D            
+            '
 
             'Loop through each node in parallel
             'fields are declared locally instead of as class-wide private properties
@@ -35,6 +63,7 @@ Namespace Services
                                                         'aggregate the x and y of all nodes
                                                         thisx = data.Nodelist(n1).X + data.Nodelist(n2).X + data.Nodelist(n3).X + thisx
                                                         thisy = data.Nodelist(n1).Y + data.Nodelist(n2).Y + data.Nodelist(n3).Y + thisy
+
                                                     Next
 
                                                     'update the x and y for this node with the mean of thisx and thisy

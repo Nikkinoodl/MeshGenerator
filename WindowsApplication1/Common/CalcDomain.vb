@@ -53,7 +53,7 @@
         Public Sub ValidateNodeTrade(ByVal numnodes As Integer)
             If Me.Nodetrade > (numnodes - 4) / 4 Then
                 Me.Nodetrade = 0
-                MsgBox(Constants.MsgNumNodes)
+                MsgBox(Constants.MSGNUMNODES)
             End If
         End Sub
 
@@ -61,7 +61,7 @@
             'offset must be less than numnodes to avoid out of range exceptions
             If Me.Offset >= numnodes Then
                 Me.Offset = numnodes - 1
-                MsgBox(Constants.MsgOffset)
+                MsgBox(Constants.MSGOFFSET)
             End If
         End Sub
 

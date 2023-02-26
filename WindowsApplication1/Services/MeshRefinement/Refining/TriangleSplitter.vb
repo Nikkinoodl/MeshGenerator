@@ -38,8 +38,6 @@ Namespace Services
                 GetNodeDetails()
 
                 'determine which is the longest side
-                '****a useful modification would be to allow forcing the choice of airfoil surface as the longest
-                'side. This would prevent uneven allocation of nodes on the surface****
                 '
                 'config = 1:  L1 is longest side
 
@@ -187,7 +185,7 @@ Namespace Services
         Private Function CreateNewNode(ByVal t As Integer, ByVal config As Integer, ByVal n As Integer) As Integer
             'Use node factory to create a new node of type determined by the factory.
             'If nodes to either side are both airfoil nodes, then np must be a airfoil node.
-            'Boundary node identification must come from the existing triangle, not the nodes as lines between nodes
+            'Boundary node identification must come from the existing triangle (not the nodes) as lines between nodes
             'can cut across corners of the calc domain
 
             Select Case config
