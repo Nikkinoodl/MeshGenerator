@@ -3,10 +3,13 @@
 Namespace Services
     Public Class GridBuilder : Implements IGridBuilder
 
-        Private t, nextn, thisv, lastv As Integer
-        Private factory As New NodeFactory()
+        Private t As Integer
+        Private ReadOnly nextn As Integer
+        Private ReadOnly thisv As Integer
+        Private ReadOnly lastv As Integer
+        Private ReadOnly factory As New NodeFactory()
 
-        Private data As IDataAccessService
+        Private ReadOnly data As IDataAccessService
 
         Public Sub New(ByVal data As IDataAccessService)
 

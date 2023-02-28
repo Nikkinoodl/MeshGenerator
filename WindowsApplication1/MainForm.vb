@@ -3,14 +3,15 @@ Imports MeshGeneration.AppSettings
 Imports MeshGeneration.Logic
 Imports MeshGeneration.Data
 Imports OpenTK.Graphics.OpenGL
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class MainForm
 
 #Region "fields"
 
-    Private settings As ISettings
-    Private data As IDataAccessService
-    Private farfield As New Calcdomain
+    Private ReadOnly settings As ISettings
+    Private ReadOnly data As IDataAccessService
+    Private ReadOnly farfield As New Calcdomain
 
 #End Region
 
@@ -68,6 +69,28 @@ Public Class MainForm
 
         GL.Ortho(0, farfield.Width, 0, farfield.Height, -1, 1)
         GL.Viewport(0, 0, farfield.Width, farfield.Height)
+
+        Dim ToolTip1 = New System.Windows.Forms.ToolTip()
+        Dim ToolTip2 = New System.Windows.Forms.ToolTip()
+        Dim ToolTip3 = New System.Windows.Forms.ToolTip()
+        Dim ToolTip4 = New System.Windows.Forms.ToolTip()
+        Dim ToolTip5 = New System.Windows.Forms.ToolTip()
+        Dim ToolTip6 = New System.Windows.Forms.ToolTip()
+        Dim ToolTip7 = New System.Windows.Forms.ToolTip()
+        Dim ToolTip8 = New System.Windows.Forms.ToolTip()
+        Dim ToolTip9 = New System.Windows.Forms.ToolTip()
+        Dim ToolTip10 = New System.Windows.Forms.ToolTip()
+
+        ToolTip1.SetToolTip(Me.TextBoxWidth, "The width of the farfield in pixels")
+        ToolTip2.SetToolTip(Me.TextBoxHeight, "The height of the farfield in pixels")
+        ToolTip3.SetToolTip(Me.TextBoxScale, "The amount by which to scale the airfoil size")
+        ToolTip4.SetToolTip(Me.TextBoxLayers, "The number of layers of triangles to create around the airfoil in the first pass")
+        ToolTip5.SetToolTip(Me.TextBoxCellHeight, "The initial triangle layer height")
+        ToolTip6.SetToolTip(Me.TextBoxCellFactor, "A factor used to fine-tune the layer height")
+        ToolTip7.SetToolTip(Me.TextBoxExpansionPower, "The amount by which to increase the height of subsequent layers: height = cellheight*cellfactor*layernumber^expansionpower")
+        ToolTip8.SetToolTip(Me.TextBoxNodeTrade, "Number of boundary nodes to reallocate between vertical/horizontal edges")
+        ToolTip9.SetToolTip(Me.TextBoxOffset, "Number of nodes to offsetp between layers - reduces the initial grid distortion")
+        ToolTip10.SetToolTip(Me.TextBoxSmoothingCycles, "Number of iterations of the smoothing routine")
 
     End Sub
 
@@ -138,13 +161,8 @@ Public Class MainForm
 
 #End Region
 
-#Region "functions"
-    Private Function StatusMessage(s) As Integer
-        'displays a status message in the form
-        TextBoxStatus.Text = s
-        TextBoxStatus.Refresh()
-        Return 0
-    End Function
+#Region "utilities"
+
 
     Private Sub EventCompletion()
         'initiates refresh of the form and repaint of the GL drawing control
@@ -154,17 +172,18 @@ Public Class MainForm
     End Sub
 
     Private Sub UpdateFarfield()
-        'pull in any changed farfield values from the form
-        farfield.Height = TextBoxHeight.Text
-        farfield.Width = TextBoxWidth.Text
-        farfield.Scale = TextBoxScale.Text
-        farfield.Layers = TextBoxLayers.Text
-        farfield.Cellheight = TextBoxCellHeight.Text
-        farfield.Cellfactor = TextBoxCellFactor.Text
-        farfield.Nodetrade = TextBoxNodeTrade.Text
-        farfield.Expansionpower = TextBoxExpansionPower.Text
-        farfield.Offset = TextBoxOffset.Text
-        farfield.Smoothingcycles = TextBoxSmoothingCycles.Text
+        'Obtain form data and perform a simple validation. Default to saved settings in 
+        'case of error
+        farfield.Height = ValidateEntry(Of Integer)(TextBoxHeight, settings.Height)
+        farfield.Width = ValidateEntry(Of Integer)(TextBoxWidth, settings.Width)
+        farfield.Scale = ValidateEntry(Of Short)(TextBoxScale, settings.Scale)
+        farfield.Layers = ValidateEntry(Of Short)(TextBoxLayers, settings.Layers)
+        farfield.Cellheight = ValidateEntry(Of Short)(TextBoxCellHeight, settings.Cellheight)
+        farfield.Cellfactor = ValidateEntry(Of Double)(TextBoxCellFactor, settings.Cellfactor)
+        farfield.Nodetrade = ValidateEntry(Of Short)(TextBoxNodeTrade, settings.Nodetrade)
+        farfield.Expansionpower = ValidateEntry(Of Double)(TextBoxExpansionPower, settings.Expansionpower)
+        farfield.Offset = ValidateEntry(Of Short)(TextBoxOffset, settings.Offset)
+        farfield.Smoothingcycles = ValidateEntry(Of Short)(TextBoxSmoothingCycles, settings.Smoothingcycles)
         farfield.Filename = TextBoxFileName.Text
     End Sub
 
@@ -311,6 +330,29 @@ Public Class MainForm
         EventCompletion()
 
     End Sub
+
+#End Region
+
+#Region "functions"
+
+    Private Function StatusMessage(s) As Integer
+        'displays a status message in the form
+        TextBoxStatus.Text = s
+        TextBoxStatus.Refresh()
+        Return 0
+    End Function
+
+    Private Function ValidateEntry(Of T)(ByRef value As Object, ByRef fallback As Object) As T
+        'On success return the value converted to specified type. On failure return the fallback value and highlight
+        'the box in yellow.
+        Try
+            value.BackColor = Color.White
+            Return CType(value.Text, T)
+        Catch ex As Exception
+            value.BackColor = Color.Yellow
+            Return fallback
+        End Try
+    End Function
 
 #End Region
 End Class

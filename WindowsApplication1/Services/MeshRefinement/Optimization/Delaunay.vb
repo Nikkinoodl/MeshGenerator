@@ -9,7 +9,7 @@ Namespace Services
         Private x1, x2, x3, xp, y1, y2, y3, yp As Double
         Private s11, s12, s13, s21, s22, s23 As String
 
-        Private data As IDataAccessService
+        Private ReadOnly data As IDataAccessService
 
         Public Sub New(ByVal data As IDataAccessService)
 

@@ -5,7 +5,7 @@ Imports System.Threading.Tasks
 Namespace Services
     Public Class GridSmoother : Implements IGridSmoother
 
-        Private data As IDataAccessService
+        Private ReadOnly data As IDataAccessService
 
         Public Sub New(ByVal data As IDataAccessService)
 

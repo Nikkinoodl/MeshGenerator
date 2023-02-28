@@ -4,7 +4,7 @@ Imports MeshGeneration.Data
 Namespace Services
     Public Class Scaler : Implements IScaler
 
-        Private data As IDataAccessService
+        Private ReadOnly data As IDataAccessService
 
         Public Sub New(ByVal data As IDataAccessService)
 

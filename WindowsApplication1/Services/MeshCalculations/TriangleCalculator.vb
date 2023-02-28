@@ -4,7 +4,7 @@ Imports System.Threading.Tasks
 Namespace Services
     Public Class TriangleCalculator : Implements ITriangleCalculator
 
-        Private data As IDataAccessService
+        Private ReadOnly data As IDataAccessService
 
         Public Sub New(ByVal data As IDataAccessService)
 

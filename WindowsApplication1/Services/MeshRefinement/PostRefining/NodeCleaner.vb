@@ -4,7 +4,7 @@ Imports MeshGeneration.Models
 Namespace Services
     Public Class NodeCleaner : Implements INodeCleaner
 
-        Private data As IDataAccessService
+        Private ReadOnly data As IDataAccessService
 
         Public Sub New(ByVal data As IDataAccessService)
 

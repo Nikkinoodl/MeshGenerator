@@ -4,7 +4,7 @@ Imports MeshGeneration.Data
 Namespace Services
     Public Class BoundaryNodeChecker : Implements IBoundaryNodeChecker
 
-        Private data As IDataAccessService
+        Private ReadOnly data As IDataAccessService
 
         Public Sub New(ByVal data As IDataAccessService)
 

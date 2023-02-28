@@ -4,7 +4,7 @@ Namespace Services
     Public Class Initializer
         Implements IInitializer
 
-        Private data As IDataPreparer
+        Private ReadOnly data As IDataPreparer
 
         Public Sub New(ByVal dataPreparer As IDataPreparer)
             Me.data = dataPreparer

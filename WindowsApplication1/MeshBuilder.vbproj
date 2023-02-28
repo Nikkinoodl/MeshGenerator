@@ -130,6 +130,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BaseSettings.vb" />
     <Compile Include="Common\Constants.vb" />
     <Compile Include="Data\Data Access\DataAccessService.vb" />
     <Compile Include="Data\Data Access\DataPreparer.vb" />
@@ -171,7 +172,6 @@
     <Compile Include="Services\MeshRefinement\PreRefining\TriangleSorter.vb" />
     <Compile Include="Services\MeshRefinement\Refining\TriangleSplitter.vb" />
     <Compile Include="Data\Domain\Base.vb" />
-    <Compile Include="Common\BaseSettings.vb" />
     <Compile Include="Services\MeshRefinement\PostRefining\BoundaryNodeChecker.vb" />
     <Compile Include="Services\InitialBuild\EmptySpaceBuilder.vb" />
     <Compile Include="Services\FileIO\AirfoilNodeReader.vb" />

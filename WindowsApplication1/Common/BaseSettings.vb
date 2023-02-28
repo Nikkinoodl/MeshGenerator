@@ -98,7 +98,7 @@ Namespace AppSettings
             End Get
             Set(value As Short)
                 If value < 1 Then
-                    MessageBox.Show(MSGSMOOTHINGCYCLES)
+                    MessageBox.Show(Constants.MSGSMOOTHINGCYCLES)
                     value = 1
                 End If
                 _smoothingcycles = value
