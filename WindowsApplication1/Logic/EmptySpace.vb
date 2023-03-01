@@ -4,10 +4,10 @@ Imports MeshGeneration.Data
 Namespace Logic
     Public Class EmptySpace
 
-        Private builder As IEmptySpaceBuilder
-        Private checker As IBoundaryNodeChecker
-        Private calculator As ITriangleCalculator
-        Private initializer As IInitializer
+        Private ReadOnly builder As IEmptySpaceBuilder
+        Private ReadOnly checker As IBoundaryNodeChecker
+        Private ReadOnly calculator As ITriangleCalculator
+        Private ReadOnly initializer As IInitializer
 
         Public Sub New(ByVal builder As IEmptySpaceBuilder, ByVal checker As IBoundaryNodeChecker, ByVal calculator As ITriangleCalculator, ByVal initializer As IInitializer)
 

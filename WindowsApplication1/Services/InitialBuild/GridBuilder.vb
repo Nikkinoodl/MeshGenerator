@@ -23,15 +23,13 @@ Namespace Services
             'index for triangles will start at zero
             t = 0
 
-            'the number of nodes that define the airfoil
+            'numnodes is the number of nodes that define the airfoil
+            'and will be used throughout the grid build
             'each subsequent layer will have the same number of nodes
-            'this is assumed to be an even number when boundary nodes are assigned
+            'NOTE: this is assumed to be an even number when boundary nodes are assigned
             Dim numnodes As Integer = data.Nodelist.Count()
 
             'validation of inputs which can only be done when numnodes is available
-
-            'ADD VALIDATION FOR NUMNODES - NEEDS TO BE EVEN
-
             farfield.ValidateNodeTrade(numnodes)
             farfield.ValidateOffset(numnodes)
 
@@ -49,20 +47,27 @@ Namespace Services
 
 #Region "Private_Methods"
         Private Sub CalcLayers(ByVal farfield As Object, ByVal numnodes As Integer)
-            'set the initial grid
-            'work out in layers from the airfoil surface
+            'Sets the initial grid by creating layers of triangles starting.
 
+            'Index of the current node is returned by a lambda function
+            Dim thisv = Function(s) numnodes + s
+
+            'In the first pass, we start with the nodes created from the coordinates that define the airfoil
+            'surface and use them to create new nodes that make up the next layer. We use both sets of nodes to
+            'build a mesh of triangles. We work outwards from the airfoil as each new layer is created.
             For j = 1 To farfield.layers
 
                 'get the height of triangles in this layer
                 Dim h As Double = farfield.TriangleHeight(j)
 
-                'the existing first and last nodes in this layer are (zero based index)
+                'the index of the first and last nodes in this layer are (zero based index)
                 Dim firstnode As Integer = data.Nodelist.Count - numnodes
                 Dim lastnode As Integer = data.Nodelist.Count - 1
 
-                'we always skip back to first node in the layer to close the grid
-                Dim nextn = Function(s)
+                'To calculate the index of the next node to be added we use a simple counter called with a lambda function.
+                'When we create a layer of triangles, the last triangle in the layer has to link up with the first
+                'one we create, so we always skip back to first node in the layer to close the grid.
+                Dim nextn = Function(s) As Integer
                                 If s = lastnode Then
                                     Return firstnode
                                 Else
@@ -70,10 +75,8 @@ Namespace Services
                                 End If
                             End Function
 
-                'index of new node
-                Dim thisv = Function(s) numnodes + s
-
-                'index of previous node
+                'Index of previously created node is returned by a lambda function. Again, the nodes of the last triangle in a layer
+                'have to be made to join up with the first node created.
                 Dim lastv = Function(s)
                                 'if thisv is the first node in the layer then lastv is the lastnode in the layer
                                 If thisv(s) = lastnode + 1 Then
@@ -87,7 +90,7 @@ Namespace Services
                 'each layer will have the same number of new nodes added
                 For n = firstnode To lastnode
 
-                    'calculate position of and set up new node
+                    'calculate position of and set up new node based on existing nodes
                     CalcNewNode(thisv(n), nextn(n), n, h)
 
                     'calculate a triangle formed by base nodes and new node
@@ -273,8 +276,8 @@ Namespace Services
 
             'calculate new node which forms isoceles triangle with the two base nodes
             '(projection of l onto the x and y axes)
-            Dim deltax As Double = CalcDeltaX(n, phi, theta, l)
-            Dim deltay As Double = CalcDeltaY(n, phi, theta, l)
+            Dim deltax As Double = CalcDeltaX(nextn, n, phi, theta, l)
+            Dim deltay As Double = CalcDeltaY(nextn, n, phi, theta, l)
 
             'add the new node
             factory.AddNode(thisv, data.Nodelist(n).X + deltax, data.Nodelist(n).Y + deltay)
@@ -325,7 +328,7 @@ Namespace Services
 
         End Function
 
-        Private Function CalcDeltaX(ByVal n As Integer, ByVal phi As Double, ByRef theta As Double, ByVal l As Double) As Double
+        Private Function CalcDeltaX(ByVal nextn As Integer, ByVal n As Integer, ByVal phi As Double, ByRef theta As Double, ByVal l As Double) As Double
             'calculate new node which forms isoceles triangle with the two base nodes
             '(projection of l onto the x axis)
 
@@ -333,9 +336,9 @@ Namespace Services
 
             deltax = -1 * System.Math.Cos(phi + theta) * l
 
-            If (data.Nodelist(n + 1).Y - data.Nodelist(n).Y) = 0 Then
+            If (data.Nodelist(nextn).Y - data.Nodelist(n).Y) = 0 Then
 
-                deltax = deltax * -1
+                deltax *= -1
 
             End If
 
@@ -343,7 +346,7 @@ Namespace Services
 
         End Function
 
-        Private Function CalcDeltaY(ByVal n As Integer, ByVal phi As Double, ByRef theta As Double, ByVal l As Double) As Double
+        Private Function CalcDeltaY(ByVal nextn As Integer, ByVal n As Integer, ByVal phi As Double, ByRef theta As Double, ByVal l As Double) As Double
             'calculate new node which forms isoceles triangle with the two base nodes
             '(projection of l onto the y axis)
 
@@ -351,9 +354,9 @@ Namespace Services
 
             deltay = System.Math.Sin(phi + theta) * l
 
-            If (data.Nodelist(n + 1).X - data.Nodelist(n).X) = 0 Then
+            If (data.Nodelist(nextn).X - data.Nodelist(n).X) = 0 Then
 
-                deltay = deltay * -1
+                deltay *= -1
 
             End If
 

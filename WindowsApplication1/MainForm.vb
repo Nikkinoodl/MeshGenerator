@@ -163,7 +163,6 @@ Public Class MainForm
 
 #Region "utilities"
 
-
     Private Sub EventCompletion()
         'initiates refresh of the form and repaint of the GL drawing control
         Me.Refresh()

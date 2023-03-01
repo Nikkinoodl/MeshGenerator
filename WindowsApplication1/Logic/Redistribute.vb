@@ -4,9 +4,9 @@ Imports MeshGeneration.Services
 Namespace Logic
     Public Class Redistribute
 
-        Private calculator As ITriangleCalculator
-        Private redistributor As IRedistributor
-        Private setter As IStatusSetter
+        Private ReadOnly calculator As ITriangleCalculator
+        Private ReadOnly redistributor As IRedistributor
+        Private ReadOnly setter As IStatusSetter
 
         Public Sub New(ByVal calculator As ITriangleCalculator, ByVal redistributor As IRedistributor, ByVal setter As IStatusSetter)
 

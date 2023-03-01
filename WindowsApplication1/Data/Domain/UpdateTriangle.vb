@@ -4,7 +4,7 @@ Namespace Models
     Public Class UpdateTriangle : Inherits Triangle
         'when triangle t in the trianglelist must be replaced
 
-        Private _t As Integer
+        Private ReadOnly _t As Integer
 
         Public Sub New()
 

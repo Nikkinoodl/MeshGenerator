@@ -4,10 +4,10 @@ Imports MeshGeneration.Services
 Namespace Logic
     Public Class Smooth
 
-        Private calculator As ITriangleCalculator
-        Private smoother As IGridSmoother
-        Private sorter As ITriangleSorter
-        Private setter As IStatusSetter
+        Private ReadOnly calculator As ITriangleCalculator
+        Private ReadOnly smoother As IGridSmoother
+        Private ReadOnly sorter As ITriangleSorter
+        Private ReadOnly setter As IStatusSetter
 
         Public Sub New(ByVal calculator As ITriangleCalculator, ByVal smoother As IGridSmoother, ByVal sorter As ITriangleSorter, ByVal setter As IStatusSetter)
 

@@ -12,12 +12,9 @@ Namespace Services
             'no error checking is performed during the read
 
             Dim factory As New NodeFactory()
-            Dim n As Integer
+            Dim n As Integer = 0 'start loop at zero so that list index will match .id
             Dim objReader As New IO.StreamReader(filename)
             Dim thisstr As String
-            'Dim unused(0 To 2) As String
-
-            n = 0   'start loop at zero so that list index will match .id
 
             'read airfoil data and assign coordinates to nodes
             '

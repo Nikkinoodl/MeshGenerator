@@ -4,10 +4,10 @@ Imports MeshGeneration.Services
 Namespace Logic
     Public Class DelaunayLogic
 
-        Private delaunay As IDelaunay
-        Private setter As IStatusSetter
-        Private sorter As ITriangleSorter
-        Private calculator As ITriangleCalculator
+        Private ReadOnly delaunay As IDelaunay
+        Private ReadOnly setter As IStatusSetter
+        Private ReadOnly sorter As ITriangleSorter
+        Private ReadOnly calculator As ITriangleCalculator
 
         Public Sub New(ByVal delaunay As IDelaunay, ByVal setter As IStatusSetter, ByVal sorter As ITriangleSorter, ByVal calculator As ITriangleCalculator)
 

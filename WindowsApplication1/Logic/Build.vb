@@ -5,15 +5,13 @@ Imports MeshGeneration.AppSettings.Constants
 Namespace Logic
     Public Class Build
 
-        Private reader As IAirfoilNodeReader
-        Private checker As IBoundaryNodeChecker
-        Private calculator As ITriangleCalculator
-        Private sorter As ITriangleSorter
-        Private scaler As IScaler
-        Private grid As IGridBuilder
-        Private initializer As IInitializer
-
-        Private filename As String
+        Private ReadOnly reader As IAirfoilNodeReader
+        Private ReadOnly checker As IBoundaryNodeChecker
+        Private ReadOnly calculator As ITriangleCalculator
+        Private ReadOnly sorter As ITriangleSorter
+        Private ReadOnly scaler As IScaler
+        Private ReadOnly grid As IGridBuilder
+        Private ReadOnly initializer As IInitializer
 
         Public Sub New(ByVal reader As IAirfoilNodeReader, ByVal checker As IBoundaryNodeChecker, ByVal calculator As ITriangleCalculator, ByVal sorter As ITriangleSorter, ByVal scaler As IScaler, ByVal grid As IGridBuilder, ByVal initializer As IInitializer)
 

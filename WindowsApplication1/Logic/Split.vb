@@ -4,11 +4,11 @@ Imports MeshGeneration.Services
 Namespace Logic
     Public Class Split
 
-        Private checker As IBoundaryNodeChecker
-        Private calculator As ITriangleCalculator
-        Private sorter As ITriangleSorter
-        Private cleaner As INodeCleaner
-        Private splitter As ITriangleSplitter
+        Private ReadOnly checker As IBoundaryNodeChecker
+        Private ReadOnly calculator As ITriangleCalculator
+        Private ReadOnly sorter As ITriangleSorter
+        Private ReadOnly cleaner As INodeCleaner
+        Private ReadOnly splitter As ITriangleSplitter
 
         Public Sub New(ByVal checker As IBoundaryNodeChecker, ByVal calculator As ITriangleCalculator, ByVal sorter As ITriangleSorter, ByVal cleaner As INodeCleaner, ByVal splitter As ITriangleSplitter)
 
