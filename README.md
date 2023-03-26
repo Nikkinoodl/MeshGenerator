@@ -16,9 +16,4 @@ generation is especially compact (although it resists all attempts to do the tri
 
 Drawing the completed mesh proved to be one of the bottlenecks in performance, so OpenGL 1.0 was used for drawing the grid.
 
-Some of the coding remains clunky, but everything runs. Sample grids are show below:
-
-![diamond with grid](https://user-images.githubusercontent.com/17559271/227782854-034e1445-a09c-4cab-87a8-f8fa693086a9.png)
-![square with grid](https://user-images.githubusercontent.com/17559271/227782858-920a1e7b-2632-4688-acd1-fc29a559b7f4.png)
-![airfoil with grid2](https://user-images.githubusercontent.com/17559271/227782862-24d19678-ff6d-4405-9c86-1467d4cfeb5f.png)
-![circle with grid](https://user-images.githubusercontent.com/17559271/227782868-d238138b-b9a3-4802-a2d4-b7d85af12479.png)
+Some of the coding remains clunky, but everything runs.
