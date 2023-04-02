@@ -1,5 +1,4 @@
 ﻿Imports MeshGeneration.Services
-Imports MeshGeneration.Data
 
 Namespace Logic
     Public Class EmptySpace
@@ -9,7 +8,7 @@ Namespace Logic
         Private ReadOnly calculator As ITriangleCalculator
         Private ReadOnly initializer As IInitializer
 
-        Public Sub New(ByVal builder As IEmptySpaceBuilder, ByVal checker As IBoundaryNodeChecker, ByVal calculator As ITriangleCalculator, ByVal initializer As IInitializer)
+        Public Sub New(builder As IEmptySpaceBuilder, checker As IBoundaryNodeChecker, calculator As ITriangleCalculator, initializer As IInitializer)
 
             Me.builder = builder
             Me.checker = checker
@@ -18,7 +17,7 @@ Namespace Logic
 
         End Sub
 
-        Public Sub Logic(ByVal farfield As Object)
+        Public Sub Logic(farfield As Object)
 
             'Call service to prep data 
             initializer.DataPreparer()

@@ -1,14 +1,16 @@
 ﻿Imports MeshGeneration.Data
-Imports MeshGeneration.Models
+Imports MeshGeneration.Factories
 
 Namespace Services
     Public Class NodeCleaner : Implements INodeCleaner
 
         Private ReadOnly data As IDataAccessService
+        Private ReadOnly factory As INodeFactory
 
-        Public Sub New(ByVal data As IDataAccessService)
+        Public Sub New(data As IDataAccessService, factory As INodeFactory)
 
             Me.data = data
+            Me.factory = factory
 
         End Sub
 
@@ -18,8 +20,6 @@ Namespace Services
             Dim n1, n2, n3, np As Integer
             Dim x1, x2, x3, y1, y2, y3, xp, yp As Double
             Dim s1, s2, s3, b1, b2, b3 As Boolean
-
-            Dim factory As New NodeFactory()
 
             Dim numtriangles As Integer = data.Trianglelist.Count
             Dim n As Integer = data.Nodelist.Count
@@ -104,7 +104,7 @@ Namespace Services
             Next
         End Sub
 
-        Private Function MidPoint(ByVal a As Double, ByVal b As Double) As Double
+        Private Function MidPoint(a As Double, b As Double) As Double
             'Finds the mid point of two cordinates
             Return ((a + b) / 2)
         End Function

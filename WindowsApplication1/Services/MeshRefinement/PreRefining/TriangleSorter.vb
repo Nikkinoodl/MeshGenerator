@@ -1,12 +1,11 @@
-﻿Imports MeshGeneration.Models
-Imports MeshGeneration.Data
+﻿Imports MeshGeneration.Data
 
 Namespace Services
     Public Class TriangleSorter : Implements ITriangleSorter
 
         Private ReadOnly data As IDataAccessService
 
-        Public Sub New(ByVal data As IDataAccessService)
+        Public Sub New(data As IDataAccessService)
 
             Me.data = data
 

@@ -6,7 +6,7 @@ Namespace Services
 
         Private ReadOnly data As IDataAccessService
 
-        Public Sub New(ByVal data As IDataAccessService)
+        Public Sub New(data As IDataAccessService)
 
             Me.data = data
 
@@ -45,9 +45,9 @@ Namespace Services
                                                     End With
 
                                                     'calculate length metrics
-                                                    triangle.L1 = System.Math.Sqrt(System.Math.Pow((x3 - x2), 2) + System.Math.Pow((y3 - y2), 2))
-                                                    triangle.L2 = System.Math.Sqrt(System.Math.Pow((x3 - x1), 2) + System.Math.Pow((y3 - y1), 2))
-                                                    triangle.L3 = System.Math.Sqrt(System.Math.Pow((x1 - x2), 2) + System.Math.Pow((y1 - y2), 2))
+                                                    triangle.L1 = Math.Sqrt(Math.Pow((x3 - x2), 2) + Math.Pow((y3 - y2), 2))
+                                                    triangle.L2 = Math.Sqrt(Math.Pow((x3 - x1), 2) + Math.Pow((y3 - y1), 2))
+                                                    triangle.L3 = Math.Sqrt(Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2))
                                                     triangle.AvgX = (x1 + x2 + x3) / 3
                                                     triangle.AvgY = (y1 + y2 + y3) / 3
 

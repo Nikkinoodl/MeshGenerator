@@ -13,7 +13,7 @@ Namespace Logic
         Private ReadOnly grid As IGridBuilder
         Private ReadOnly initializer As IInitializer
 
-        Public Sub New(ByVal reader As IAirfoilNodeReader, ByVal checker As IBoundaryNodeChecker, ByVal calculator As ITriangleCalculator, ByVal sorter As ITriangleSorter, ByVal scaler As IScaler, ByVal grid As IGridBuilder, ByVal initializer As IInitializer)
+        Public Sub New(reader As IAirfoilNodeReader, checker As IBoundaryNodeChecker, calculator As ITriangleCalculator, sorter As ITriangleSorter, scaler As IScaler, grid As IGridBuilder, initializer As IInitializer)
 
             Me.reader = reader
             Me.checker = checker
@@ -25,7 +25,7 @@ Namespace Logic
 
         End Sub
 
-        Public Sub Logic(ByVal farfield As Calcdomain)
+        Public Sub Logic(farfield As Calcdomain)
 
             'Call service to prep data 
             initializer.DataPreparer()

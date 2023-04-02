@@ -2,7 +2,7 @@
 
     Public Interface IRedistributor
 
-        Sub Redistribute(ByVal farfield As Object)
+        Sub Redistribute(farfield As Object)
 
     End Interface
 End Namespace

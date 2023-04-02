@@ -6,7 +6,7 @@ Namespace Services
 
         Private ReadOnly data As IDataPreparer
 
-        Public Sub New(ByVal dataPreparer As IDataPreparer)
+        Public Sub New(dataPreparer As IDataPreparer)
             Me.data = dataPreparer
         End Sub
 

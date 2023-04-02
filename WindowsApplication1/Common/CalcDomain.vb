@@ -13,7 +13,7 @@
 #Region "public properties"
         'Properties that are calculated from other properties in the calc domain
 
-        Public ReadOnly Property NodesOnBoundary(ByVal side As String, ByVal numnodes As Integer) As Integer
+        Public ReadOnly Property NodesOnBoundary(side As String, numnodes As Integer) As Integer
             Get
                 Dim s As SByte
                 Dim perimeter As Double = 2 * (Me.Height + Me.Width)
@@ -35,12 +35,12 @@
             End Get
         End Property
 
-        Public ReadOnly Property TriangleHeight(ByVal layer As Integer) As Double
+        Public ReadOnly Property TriangleHeight(layer As Integer) As Double
             Get
                 'Calculates the height of the layer (orthogonal distance relative to the line connecting nextn, n)
 
                 Dim h As Double
-                h = Me.Cellheight * Me.Cellfactor * System.Math.Pow(layer, Me.Expansionpower)
+                h = Me.Cellheight * Me.Cellfactor * Math.Pow(layer, Me.Expansionpower)
 
                 Return h
 
@@ -50,14 +50,14 @@
 #End Region
 
 #Region "Public Methods"
-        Public Sub ValidateNodeTrade(ByVal numnodes As Integer)
+        Public Sub ValidateNodeTrade(numnodes As Integer)
             If Me.Nodetrade > (numnodes - 4) / 4 Then
                 Me.Nodetrade = 0
                 MsgBox(Constants.MSGNUMNODES)
             End If
         End Sub
 
-        Public Sub ValidateOffset(ByVal numnodes As Integer)
+        Public Sub ValidateOffset(numnodes As Integer)
             'offset must be less than numnodes to avoid out of range exceptions
             If Me.Offset >= numnodes Then
                 Me.Offset = numnodes - 1

@@ -6,14 +6,14 @@ Namespace Services
 
         Private ReadOnly data As IDataAccessService
 
-        Public Sub New(ByVal data As IDataAccessService)
+        Public Sub New(data As IDataAccessService)
 
             Me.data = data
 
         End Sub
 
 
-        Public Sub AirfoilScaler(ByVal farfield As Object) Implements IScaler.AirfoilScaler
+        Public Sub AirfoilScaler(farfield As Object) Implements IScaler.AirfoilScaler
             'scales the airfoil nodes to fit the chosen farfield parameters
             'and centers the airfoil in the farfield
 

@@ -1,5 +1,4 @@
-﻿Imports System.Threading.Tasks
-Imports MeshGeneration.Services
+﻿Imports MeshGeneration.Services
 
 Namespace Logic
     Public Class Redistribute
@@ -8,7 +7,7 @@ Namespace Logic
         Private ReadOnly redistributor As IRedistributor
         Private ReadOnly setter As IStatusSetter
 
-        Public Sub New(ByVal calculator As ITriangleCalculator, ByVal redistributor As IRedistributor, ByVal setter As IStatusSetter)
+        Public Sub New(calculator As ITriangleCalculator, redistributor As IRedistributor, setter As IStatusSetter)
 
             Me.calculator = calculator
             Me.redistributor = redistributor
@@ -16,7 +15,7 @@ Namespace Logic
 
         End Sub
 
-        Public Sub Logic(ByVal farfield As Object)
+        Public Sub Logic(farfield As Object)
 
             'Redistribute boundary nodes
             redistributor.Redistribute(farfield)

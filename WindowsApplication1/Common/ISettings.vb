@@ -14,7 +14,7 @@
         Property Filename As String
 
         Sub CreateSettings()
-        Sub WriteSettings(ByVal farfield As Object)
+        Sub WriteSettings(farfield As Object)
 
     End Interface
 End Namespace

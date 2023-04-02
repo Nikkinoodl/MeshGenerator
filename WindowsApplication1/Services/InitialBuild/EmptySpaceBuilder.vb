@@ -1,13 +1,19 @@
-﻿Imports MeshGeneration.Models
+﻿Imports MeshGeneration.Factories
 
 Namespace Services
     Public Class EmptySpaceBuilder : Implements IEmptySpaceBuilder
 
-        Public Sub BuildEmptySpace(ByVal farfield As Object) Implements IEmptySpaceBuilder.BuildEmptySpace
+        Private ReadOnly factory As INodeFactory
+
+        Public Sub New(factory As INodeFactory)
+
+            Me.factory = factory
+
+        End Sub
+
+        Public Sub BuildEmptySpace(farfield As Object) Implements IEmptySpaceBuilder.BuildEmptySpace
             'creates a template for a mesh in an empty space that does not contain an airfoil
             'for best results use an asymmetrical grid
-
-            Dim factory As New NodeFactory()
 
             With factory
 

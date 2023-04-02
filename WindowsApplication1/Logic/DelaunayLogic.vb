@@ -9,7 +9,7 @@ Namespace Logic
         Private ReadOnly sorter As ITriangleSorter
         Private ReadOnly calculator As ITriangleCalculator
 
-        Public Sub New(ByVal delaunay As IDelaunay, ByVal setter As IStatusSetter, ByVal sorter As ITriangleSorter, ByVal calculator As ITriangleCalculator)
+        Public Sub New(delaunay As IDelaunay, setter As IStatusSetter, sorter As ITriangleSorter, calculator As ITriangleCalculator)
 
             Me.delaunay = delaunay
             Me.setter = setter

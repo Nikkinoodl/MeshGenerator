@@ -1,17 +1,22 @@
-﻿Imports MeshGeneration.Models
+﻿Imports MeshGeneration.Data
+Imports MeshGeneration.Factories
 
 Namespace Services
     Public Class AirfoilNodeReader : Inherits Base : Implements IAirfoilNodeReader
-        Public Sub New()
+
+        Private ReadOnly factory As INodeFactory
+
+        Public Sub New(factory As INodeFactory)
+
+            Me.factory = factory
 
         End Sub
 
-        Public Sub ReadAirfoilNodes(ByVal filename As String) Implements IAirfoilNodeReader.ReadAirfoilNodes
+        Public Sub ReadAirfoilNodes(filename As String) Implements IAirfoilNodeReader.ReadAirfoilNodes
 
             'reads a list of nodes from a flat file that will be used to model an object
             'no error checking is performed during the read
 
-            Dim factory As New NodeFactory()
             Dim n As Integer = 0 'start loop at zero so that list index will match .id
             Dim objReader As New IO.StreamReader(filename)
             Dim thisstr As String

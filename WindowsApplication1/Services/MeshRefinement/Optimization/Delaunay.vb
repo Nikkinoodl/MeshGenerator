@@ -1,6 +1,7 @@
 ﻿Imports MeshGeneration.Models
 Imports MeshGeneration.Data
 Imports MeshGeneration.AppSettings.Constants
+Imports MeshGeneration.Factories
 
 Namespace Services
     Public Class Delaunay : Implements IDelaunay
@@ -10,10 +11,12 @@ Namespace Services
         Private s11, s12, s13, s21, s22, s23 As String
 
         Private ReadOnly data As IDataAccessService
+        Private ReadOnly factory As INodeFactory
 
-        Public Sub New(ByVal data As IDataAccessService)
+        Public Sub New(data As IDataAccessService, factory As INodeFactory)
 
             Me.data = data
+            Me.factory = factory
 
         End Sub
 
@@ -104,7 +107,6 @@ Namespace Services
             '                                adj
             '
             '
-            Dim factory As New NodeFactory()
             Dim configurations = New Integer() {1, 2, 3, 4, 5, 6}
 
             Dim numtriangles = data.Trianglelist.Count
@@ -182,32 +184,32 @@ Namespace Services
             InCircle = False
 
             'Pre-check for divide by zero condition
-            If System.Math.Abs(y1 - y2) < eps And System.Math.Abs(y2 - y3) < eps Then
+            If Math.Abs(y1 - y2) < eps And Math.Abs(y2 - y3) < eps Then
                 MsgBox(MSGOVERLAP)
                 Exit Function
             End If
 
             'We could wrap this If statement in a try..catch block but it is faster to check for non-zero divisors
             'beforehand
-            If System.Math.Abs(y2 - y1) < eps Then
+            If Math.Abs(y2 - y1) < eps Then
                 m2 = -(x3 - x2) / (y3 - y2)
-                mx2 = (x2 + x3) / 2
-                my2 = (y2 + y3) / 2
-                xc = (x2 + x1) / 2
+                mx2 = (x2 + x3) * 0.5
+                my2 = (y2 + y3) * 0.5
+                xc = (x2 + x1) * 0.5
                 yc = m2 * (xc - mx2) + my2
-            ElseIf System.Math.Abs(y3 - y2) < eps Then
+            ElseIf Math.Abs(y3 - y2) < eps Then
                 m1 = -(x2 - x1) / (y2 - y1)
-                mx1 = (x1 + x2) / 2
-                my1 = (y1 + y2) / 2
-                xc = (x3 + x2) / 2
+                mx1 = (x1 + x2) * 0.5
+                my1 = (y1 + y2) * 0.5
+                xc = (x3 + x2) * 0.5
                 yc = m1 * (xc - mx1) + my1
             Else
                 m1 = -(x2 - x1) / (y2 - y1)
                 m2 = -(x3 - x2) / (y3 - y2)
-                mx1 = (x1 + x2) / 2
-                mx2 = (x2 + x3) / 2
-                my1 = (y1 + y2) / 2
-                my2 = (y2 + y3) / 2
+                mx1 = (x1 + x2) * 0.5
+                mx2 = (x2 + x3) * 0.5
+                my1 = (y1 + y2) * 0.5
+                my2 = (y2 + y3) * 0.5
                 xc = (m1 * mx1 - m2 * mx2 + my2 - my1) / (m1 - m2)
                 yc = m1 * (xc - mx1) + my1
             End If
@@ -215,7 +217,7 @@ Namespace Services
             dx = x2 - xc
             dy = y2 - yc
             rsqr = dx * dx + dy * dy
-            r = System.Math.Sqrt(rsqr)
+            r = Math.Sqrt(rsqr)
             dx = xp - xc
             dy = yp - yc
             drsqr = dx * dx + dy * dy
@@ -250,7 +252,7 @@ Namespace Services
 
         End Sub
 
-        Private Sub GetNodeId(ByVal t As Integer)
+        Private Sub GetNodeId(t As Integer)
             'sets value of the node indexes and side values
 
             n1 = data.Trianglelist(t).V1
@@ -262,7 +264,7 @@ Namespace Services
 
         End Sub
 
-        Private Function JoiningSide(ByVal configuration As Integer, ByVal t As Integer) As String
+        Private Function JoiningSide(configuration As Integer, t As Integer) As String
             'Identifies if joining side of this triangle is boundary or surface
             'This could all be moved to data, but it is basically the logic behind configuration
 
@@ -283,7 +285,7 @@ Namespace Services
 
         End Function
 
-        Private Sub ProcessAdjacent(ByVal configuration As Integer, ByVal trianglequery As IEnumerable(Of ITriangle))
+        Private Sub ProcessAdjacent(configuration As Integer, trianglequery As IEnumerable(Of ITriangle))
             'Sets np for adjacent triangle
             'This could all be moved to factory, but it is basically the logic behind configuration
 
@@ -306,7 +308,7 @@ Namespace Services
 
         End Sub
 
-        Private Sub FlipTriangles(ByVal configuration As Integer, ByVal factory As NodeFactory)
+        Private Sub FlipTriangles(configuration As Integer, factory As NodeFactory)
             'Calls factory to flip triangles
 
             Select Case configuration

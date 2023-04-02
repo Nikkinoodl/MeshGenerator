@@ -23,7 +23,7 @@ Namespace Data
 
         End Function
 
-        Public Function Exists(ByVal xp As Double, ByVal yp As Double) As Integer Implements IDataAccessService.Exists
+        Public Function Exists(xp As Double, yp As Double) As Integer Implements IDataAccessService.Exists
             'Checks for an existing node at the given coordinates
 
             Dim countNode = Aggregate node As INode In Repository.Nodelist
@@ -33,7 +33,7 @@ Namespace Data
 
         End Function
 
-        Function FindNode(ByVal xp As Double, ByVal yp As Double) As Integer Implements IDataAccessService.FindNode
+        Function FindNode(xp As Double, yp As Double) As Integer Implements IDataAccessService.FindNode
             'Returns the id of an existing node
 
             Dim n = (From node As INode In Repository.Nodelist
@@ -43,7 +43,7 @@ Namespace Data
 
         End Function
 
-        Function NodeV(ByVal n As Integer) As IEnumerable(Of INode) Implements IDataAccessService.NodeV
+        Function NodeV(n As Integer) As IEnumerable(Of INode) Implements IDataAccessService.NodeV
             'Returns a specific node (as IEnumerable)
 
             Dim thisNode = From node As INode In Repository.Nodelist
@@ -53,7 +53,7 @@ Namespace Data
 
         End Function
 
-        Public Function SmoothTriangle(ByVal thisnode As Integer) As IEnumerable(Of ITriangle) Implements IDataAccessService.SmoothTriangle
+        Public Function SmoothTriangle(thisnode As Integer) As IEnumerable(Of ITriangle) Implements IDataAccessService.SmoothTriangle
             'Returns a list of the triangles that contains a specific node
 
             Dim thislist = From triangle As ITriangle In Repository.Trianglelist
@@ -74,7 +74,7 @@ Namespace Data
 
         End Function
 
-        Public Function BoundaryNode(ByVal farfield As Object) As IEnumerable(Of INode) Implements IDataAccessService.BoundaryNode
+        Public Function BoundaryNode(farfield As Object) As IEnumerable(Of INode) Implements IDataAccessService.BoundaryNode
             'Returns a list of all nodes that are on the boundary of the farfield
 
             Dim boundarynodes = From node As INode In Repository.Nodelist
@@ -84,7 +84,7 @@ Namespace Data
 
         End Function
 
-        Public Sub CheckBoundaryNode(ByVal farfield As Object) Implements IDataAccessService.CheckBoundaryNode
+        Public Sub CheckBoundaryNode(farfield As Object) Implements IDataAccessService.CheckBoundaryNode
             'Ensures that all nodes on the boundary have the correct attribute
             'It was easier to implement this here rather than in NodeFactory
 
@@ -102,7 +102,7 @@ Namespace Data
 
         End Sub
 
-        Public Function Trianglequery(ByVal configuration As Integer, ByVal n1 As Integer, ByVal n2 As Integer, ByVal n3 As Integer) As IEnumerable(Of ITriangle) Implements IDataAccessService.Trianglequery
+        Public Function Trianglequery(configuration As Integer, n1 As Integer, n2 As Integer, n3 As Integer) As IEnumerable(Of ITriangle) Implements IDataAccessService.Trianglequery
             'Returns a list of triangles for use in Delaunay triangulation
 
             Dim basequery = Repository.Trianglelist
@@ -129,7 +129,7 @@ Namespace Data
 
         End Function
 
-        Function EdgeBoundary(ByVal edge As String, ByVal farfield As Object) As IOrderedEnumerable(Of INode) Implements IDataAccessService.EdgeBoundary
+        Function EdgeBoundary(edge As String, farfield As Object) As IOrderedEnumerable(Of INode) Implements IDataAccessService.EdgeBoundary
             'Returns an ordered list of nodes on the top edge of the farfield boundary
             'Excludes the corner nodes
 

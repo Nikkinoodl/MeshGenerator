@@ -10,7 +10,7 @@ Namespace Models
 #End Region
 
 #Region "constructor overloads"
-        Public Sub New(ByVal this_id As Integer, ByVal this_x As Double, ByVal this_y As Double)
+        Public Sub New(this_id As Integer, this_x As Double, this_y As Double)
             Id = this_id
             X = this_x
             Y = this_y
@@ -19,7 +19,7 @@ Namespace Models
             Repository.Nodelist.Add(Me)
         End Sub
 
-        Public Sub New(ByVal this_id As Integer, ByVal this_x As Double, ByVal this_y As Double, ByVal this_surface As Boolean, ByVal this_boundary As Boolean)
+        Public Sub New(this_id As Integer, this_x As Double, this_y As Double, this_surface As Boolean, this_boundary As Boolean)
             Id = this_id
             X = this_x
             Y = this_y

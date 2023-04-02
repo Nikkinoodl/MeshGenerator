@@ -1,4 +1,5 @@
 ﻿Imports MeshGeneration.Data
+Imports MeshGeneration.Factories
 
 Namespace Services
     Public Class TriangleSplitter : Implements ITriangleSplitter
@@ -6,14 +7,13 @@ Namespace Services
         Private n1, n2, n3, x1, x2, x3, y1, y2, y3, xp, yp As Double
         Private s1, s2, s3, b1, b2, b3 As Boolean
 
-        'all new nodes, new triangles and replacement triangles are created by the nodefactory
-        Private ReadOnly factory As New NodeFactory()
-
         Private ReadOnly data As IDataAccessService
+        Private ReadOnly factory As INodeFactory
 
-        Public Sub New(ByVal data As IDataAccessService)
+        Public Sub New(data As IDataAccessService, factory As INodeFactory)
 
             Me.data = data
+            Me.factory = factory
 
         End Sub
 
@@ -92,7 +92,7 @@ Namespace Services
 
         End Sub
 
-        Private Function FindLongestSide(ByVal t As Integer) As Integer
+        Private Function FindLongestSide(t As Integer) As Integer
             'Returns an integer to indicate which is the longest side on the triangle
 
             If data.Trianglelist(t).L1 >= data.Trianglelist(t).L2 And data.Trianglelist(t).L1 > data.Trianglelist(t).L3 Then
@@ -105,7 +105,7 @@ Namespace Services
 
         End Function
 
-        Private Function FindMidPointX(ByVal config As Integer) As Double
+        Private Function FindMidPointX(config As Integer) As Double
             'Gets the location of xp depending on which is the longest side
 
             Select Case config
@@ -123,7 +123,7 @@ Namespace Services
 
         End Function
 
-        Private Function FindMidPointY(ByVal config As Integer) As Double
+        Private Function FindMidPointY(config As Integer) As Double
             'Gets the location of y depending on which is the longest side
 
             Select Case config
@@ -141,14 +141,14 @@ Namespace Services
 
         End Function
 
-        Private Function MidPoint(ByVal a As Double, ByVal b As Double) As Double
+        Private Function MidPoint(a As Double, b As Double) As Double
             'Finds the mid point of two cordinates
 
             Return ((a + b) / 2)
 
         End Function
 
-        Private Sub GetNodeId(ByVal t As Integer)
+        Private Sub GetNodeId(t As Integer)
             'Get the node ids of the triangle vertices
 
             n1 = data.Trianglelist(t).V1
@@ -182,7 +182,7 @@ Namespace Services
             End With
         End Sub
 
-        Private Function CreateNewNode(ByVal t As Integer, ByVal config As Integer, ByVal n As Integer) As Integer
+        Private Function CreateNewNode(t As Integer, config As Integer, n As Integer) As Integer
             'Use node factory to create a new node of type determined by the factory.
             'If nodes to either side are both airfoil nodes, then np must be a airfoil node.
             'Boundary node identification must come from the existing triangle (not the nodes) as lines between nodes
@@ -203,7 +203,7 @@ Namespace Services
 
         End Function
 
-        Private Function DivideTriangles(ByVal t As Integer, ByVal config As Integer, ByVal newid As Integer) As Integer
+        Private Function DivideTriangles(t As Integer, config As Integer, newid As Integer) As Integer
             'Replace the existing triangle instance and create a new triangle instance
 
             Select Case config

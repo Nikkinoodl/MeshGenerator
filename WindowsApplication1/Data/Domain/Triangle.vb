@@ -18,7 +18,7 @@ Namespace Models
                 'calculated using Hero's formula
                 Dim value As Double
                 Dim p As Double = (L1 + L2 + L3) / 2
-                value = System.Math.Sqrt(p * (p - L1) * (p - L2) * (p - L3))
+                value = Math.Sqrt(p * (p - L1) * (p - L2) * (p - L3))
                 _area = value
                 Return _area
             End Get
@@ -27,7 +27,7 @@ Namespace Models
 
 #Region "constructor overloads"
 
-        Public Sub New(ByVal this_id As Integer, ByVal this_v1 As Integer, ByVal this_v2 As Integer, ByVal this_v3 As Integer)
+        Public Sub New(this_id As Integer, this_v1 As Integer, this_v2 As Integer, this_v3 As Integer)
             Id = this_id
             V1 = this_v1
             V2 = this_v2
@@ -39,7 +39,7 @@ Namespace Models
             Repository.Trianglelist.Add(Me)
         End Sub
 
-        Public Sub New(ByVal this_id As Integer, ByVal this_v1 As Integer, ByVal this_v2 As Integer, ByVal this_v3 As Integer, ByVal this_s1 As String, ByVal this_s2 As String, ByVal this_s3 As String)
+        Public Sub New(this_id As Integer, this_v1 As Integer, this_v2 As Integer, this_v3 As Integer, this_s1 As String, this_s2 As String, this_s3 As String)
             Id = this_id
             V1 = this_v1
             V2 = this_v2

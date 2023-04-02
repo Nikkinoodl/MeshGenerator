@@ -10,7 +10,7 @@ Namespace Models
         End Sub
 
         'constructor overloads
-        Public Sub New(ByVal this_id As Integer, ByVal this_x As Double, ByVal this_y As Double)
+        Public Sub New(this_id As Integer, this_x As Double, this_y As Double)
             Id = this_id
             X = this_x
             Y = this_y

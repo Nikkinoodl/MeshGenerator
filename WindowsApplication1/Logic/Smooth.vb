@@ -9,7 +9,7 @@ Namespace Logic
         Private ReadOnly sorter As ITriangleSorter
         Private ReadOnly setter As IStatusSetter
 
-        Public Sub New(ByVal calculator As ITriangleCalculator, ByVal smoother As IGridSmoother, ByVal sorter As ITriangleSorter, ByVal setter As IStatusSetter)
+        Public Sub New(calculator As ITriangleCalculator, smoother As IGridSmoother, sorter As ITriangleSorter, setter As IStatusSetter)
 
             Me.calculator = calculator
             Me.smoother = smoother
@@ -18,7 +18,7 @@ Namespace Logic
 
         End Sub
 
-        Public Sub Logic(ByVal farfield As Object)
+        Public Sub Logic(farfield As Object)
 
             'Calculate lengths, sort Repository.Trianglelist by x coord can be done in parallel
             Dim calcTask As Task = Task.Factory.StartNew(Sub() calculator.CalculateLengths())

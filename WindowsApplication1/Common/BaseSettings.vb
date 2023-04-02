@@ -98,7 +98,7 @@ Namespace AppSettings
             End Get
             Set(value As Short)
                 If value < 1 Then
-                    MessageBox.Show(Constants.MSGSMOOTHINGCYCLES)
+                    MessageBox.Show(MSGSMOOTHINGCYCLES)
                     value = 1
                 End If
                 _smoothingcycles = value
@@ -175,7 +175,7 @@ Namespace AppSettings
         End Sub
 
         'Write settings to the settings.xml file
-        Public Sub WriteSettings(ByVal farfield As Object) Implements ISettings.WriteSettings
+        Public Sub WriteSettings(farfield As Object) Implements ISettings.WriteSettings
             Dim xmlDoc As New XmlDocument()
             xmlDoc.Load("Settings.xml")
 

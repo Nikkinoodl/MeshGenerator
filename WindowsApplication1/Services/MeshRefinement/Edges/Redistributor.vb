@@ -7,13 +7,13 @@ Namespace Services
 
         Private ReadOnly data As IDataAccessService
 
-        Public Sub New(ByVal data As IDataAccessService)
+        Public Sub New(data As IDataAccessService)
 
             Me.data = data
 
         End Sub
 
-        Public Sub Redistribute(ByVal farfield As Object) Implements IRedistributor.Redistribute
+        Public Sub Redistribute(farfield As Object) Implements IRedistributor.Redistribute
             'Reallocate nodes on the boundary edges to provide a more even distribution
             'this is intended to be done after refining the grid and requires smoothing afterwards
 
@@ -30,7 +30,7 @@ Namespace Services
 
                                         'using a simple harmonic distribution
                                         Dim nodeFraction = Function(n) n / (nodeCount + 1)
-                                        Dim lengthFraction = Function(n) (nodeFraction(n) + 0.08 * (Math.Cos(Math.PI * nodeFraction(n))))
+                                        Dim lengthFraction = Function(n) (nodeFraction(n) + 0.05 * (Math.Cos(Math.PI * nodeFraction(n))))
 
                                         'Loop through nodes on each edge in turn
                                         For Each node In sideNodes

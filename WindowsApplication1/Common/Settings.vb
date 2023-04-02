@@ -1,7 +1,4 @@
-﻿Imports System.Xml
-Imports MeshGeneration.AppSettings
-
-Namespace AppSettings
+﻿Namespace AppSettings
     Public Class Settings : Inherits BaseSettings : Implements ISettings
 
 #Region "constructor"

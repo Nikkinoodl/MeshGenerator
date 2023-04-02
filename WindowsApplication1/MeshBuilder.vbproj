@@ -138,7 +138,7 @@
     <Compile Include="Data\Interfaces\IDataAccessService.vb" />
     <Compile Include="Data\Interfaces\IDataPreparer.vb" />
     <Compile Include="Data\Repository\Repository.vb" />
-    <Compile Include="Factory\BaseNodeFactory.vb" />
+    <Compile Include="Factory\INodeFactory.vb" />
     <Compile Include="Factory\NodeFactory.vb" />
     <Compile Include="Data\Domain\BaseTriangle.vb" />
     <Compile Include="Logic\DelaunayLogic.vb" />

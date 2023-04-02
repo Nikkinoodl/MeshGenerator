@@ -2,6 +2,7 @@
 Imports MeshGeneration.Services
 Imports MeshGeneration.Data
 Imports MeshGeneration.Logic
+Imports MeshGeneration.Factories
 Imports SimpleInjector
 
 Module Main
@@ -48,7 +49,7 @@ Module Main
         container.Register(Of IScaler, Scaler)()
         container.Register(Of IRedistributor, Redistributor)()
         container.Register(Of IGridBuilder, GridBuilder)()
-        container.Register(Of BaseNodeFactory, NodeFactory)()
+        container.Register(Of INodeFactory, NodeFactory)()
 
         'data layer
         container.Register(Of IDataPreparer, DataPreparer)()

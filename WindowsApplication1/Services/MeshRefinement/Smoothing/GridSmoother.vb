@@ -7,7 +7,7 @@ Namespace Services
 
         Private ReadOnly data As IDataAccessService
 
-        Public Sub New(ByVal data As IDataAccessService)
+        Public Sub New(data As IDataAccessService)
 
             Me.data = data
 

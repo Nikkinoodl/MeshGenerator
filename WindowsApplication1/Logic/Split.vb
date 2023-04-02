@@ -10,7 +10,7 @@ Namespace Logic
         Private ReadOnly cleaner As INodeCleaner
         Private ReadOnly splitter As ITriangleSplitter
 
-        Public Sub New(ByVal checker As IBoundaryNodeChecker, ByVal calculator As ITriangleCalculator, ByVal sorter As ITriangleSorter, ByVal cleaner As INodeCleaner, ByVal splitter As ITriangleSplitter)
+        Public Sub New(checker As IBoundaryNodeChecker, calculator As ITriangleCalculator, sorter As ITriangleSorter, cleaner As INodeCleaner, splitter As ITriangleSplitter)
 
             Me.checker = checker
             Me.calculator = calculator
@@ -20,7 +20,7 @@ Namespace Logic
 
         End Sub
 
-        Public Sub Logic(ByVal farfield As Object)
+        Public Sub Logic(farfield As Object)
 
             'calculate lengths, average x's and sort Repository.Trianglelist by avg x coord
             'these can be done in parallel

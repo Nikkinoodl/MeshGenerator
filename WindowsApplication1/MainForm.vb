@@ -3,7 +3,6 @@ Imports MeshGeneration.AppSettings
 Imports MeshGeneration.Logic
 Imports MeshGeneration.Data
 Imports OpenTK.Graphics.OpenGL
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class MainForm
 
@@ -17,7 +16,7 @@ Public Class MainForm
 
 #Region "Constructor"
 
-    Public Sub New(ByVal settings As ISettings, ByVal data As IDataAccessService)
+    Public Sub New(settings As ISettings, data As IDataAccessService)
 
         Me.settings = settings
         Me.data = data

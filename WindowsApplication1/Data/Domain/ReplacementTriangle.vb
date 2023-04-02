@@ -10,7 +10,9 @@ Namespace Models
 
         End Sub
 
-        Public Sub New(ByVal this_t As Integer, ByVal this_id As Integer, ByVal this_v1 As Integer, ByVal this_v2 As Integer, ByVal this_v3 As Integer, ByVal this_s1 As String, ByVal this_s2 As String, ByVal this_s3 As String)
+        Public Sub New(this_t As Integer, this_id As Integer, this_v1 As Integer, this_v2 As Integer, this_v3 As Integer, this_s1 As String, this_s2 As String, this_s3 As String)
+
+            'To avoid confusion, note that _t and this_t refer to the index of the triangle in Trianglelist
             _t = this_t
             Id = this_id
             V1 = this_v1
