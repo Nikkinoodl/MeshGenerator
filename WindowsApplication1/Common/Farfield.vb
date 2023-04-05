@@ -1,5 +1,5 @@
 ﻿Namespace AppSettings
-    Public Class Calcdomain : Inherits BaseSettings
+    Public Class Farfield : Inherits BaseSettings
 
 #Region "constructor"
         Public Sub New()

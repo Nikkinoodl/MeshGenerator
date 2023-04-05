@@ -15,7 +15,6 @@
         Public Property S2 As String
         Public Property S3 As String
         Public Property Complete As Boolean
-        Public ReadOnly Property Area As Double
 #End Region
 
     End Class

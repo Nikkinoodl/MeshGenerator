@@ -10,7 +10,8 @@ Public Class MainForm
 
     Private ReadOnly settings As ISettings
     Private ReadOnly data As IDataAccessService
-    Private ReadOnly farfield As New Calcdomain
+
+    Private ReadOnly farfield As New Farfield
 
 #End Region
 

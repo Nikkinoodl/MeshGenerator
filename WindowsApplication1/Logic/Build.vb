@@ -25,7 +25,7 @@ Namespace Logic
 
         End Sub
 
-        Public Sub Logic(farfield As Calcdomain)
+        Public Sub Logic(farfield As Farfield)
 
             'Call service to prep data 
             initializer.DataPreparer()

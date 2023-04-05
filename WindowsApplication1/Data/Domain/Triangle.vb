@@ -7,24 +7,6 @@ Namespace Models
 
         End Sub
 
-#Region "fields"
-        Private _area As Double
-#End Region
-
-#Region "public properties"
-
-        Public Overloads ReadOnly Property Area As Double 'area of triangle available for ranking
-            Get
-                'calculated using Hero's formula
-                Dim value As Double
-                Dim p As Double = (L1 + L2 + L3) / 2
-                value = Math.Sqrt(p * (p - L1) * (p - L2) * (p - L3))
-                _area = value
-                Return _area
-            End Get
-        End Property
-#End Region
-
 #Region "constructor overloads"
 
         Public Sub New(this_id As Integer, this_v1 As Integer, this_v2 As Integer, this_v3 As Integer)
