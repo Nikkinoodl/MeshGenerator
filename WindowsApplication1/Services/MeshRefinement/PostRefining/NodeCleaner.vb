@@ -5,9 +5,9 @@ Namespace Services
     Public Class NodeCleaner : Implements INodeCleaner
 
         Private ReadOnly data As IDataAccessService
-        Private ReadOnly factory As INodeFactory
+        Private ReadOnly factory As IGridFactory
 
-        Public Sub New(data As IDataAccessService, factory As INodeFactory)
+        Public Sub New(data As IDataAccessService, factory As IGridFactory)
 
             Me.data = data
             Me.factory = factory

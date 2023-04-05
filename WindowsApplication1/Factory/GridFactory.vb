@@ -5,7 +5,7 @@ Namespace Factories
     ''' <summary>
     ''' This factory is used to create the basic grid elements (nodes and triangles)
     ''' </summary>
-    Public Class NodeFactory : Implements INodeFactory
+    Public Class GridFactory : Implements IGridFactory
 
 #Region "Constructor"
 
@@ -23,8 +23,8 @@ Namespace Factories
         ''' <param name="this_y"></param>
         ''' <param name="this_surface"></param>
         ''' <param name="this_boundary"></param>
-        Public Sub RequestNode(this_id As Integer, this_x As Double, this_y As Double, this_surface As Boolean, this_boundary As Boolean) Implements INodeFactory.RequestNode
-            Dim newNode As INode = New Node(this_id, this_x, this_y, this_surface, this_boundary)
+        Public Sub RequestNode(this_id As Integer, this_x As Double, this_y As Double, this_surface As Boolean, this_boundary As Boolean) Implements IGridFactory.RequestNode
+            Dim newNode As Node = New Node(this_id, this_x, this_y, this_surface, this_boundary)
         End Sub
 
         ''' <summary>
@@ -33,8 +33,8 @@ Namespace Factories
         ''' <param name="this_id"></param>
         ''' <param name="this_x"></param>
         ''' <param name="this_y"></param>
-        Public Sub AddNode(this_id As Integer, this_x As Double, this_y As Double) Implements INodeFactory.AddNode
-            Dim newNode As INode = New Node(this_id, this_x, this_y, False, False)
+        Public Sub AddNode(this_id As Integer, this_x As Double, this_y As Double) Implements IGridFactory.AddNode
+            Dim newNode As Node = New Node(this_id, this_x, this_y, False, False)
         End Sub
 
         ''' <summary>
@@ -43,8 +43,8 @@ Namespace Factories
         ''' <param name="this_id"></param>
         ''' <param name="this_x"></param>
         ''' <param name="this_y"></param>
-        Public Sub AddBoundaryNode(this_id As Integer, this_x As Double, this_y As Double) Implements INodeFactory.AddBoundaryNode
-            Dim newNode As INode = New Node(this_id, this_x, this_y, False, True)
+        Public Sub AddBoundaryNode(this_id As Integer, this_x As Double, this_y As Double) Implements IGridFactory.AddBoundaryNode
+            Dim newNode As Node = New Node(this_id, this_x, this_y, False, True)
         End Sub
 
         ''' <summary>
@@ -53,8 +53,8 @@ Namespace Factories
         ''' <param name="this_id"></param>
         ''' <param name="this_x"></param>
         ''' <param name="this_y"></param>
-        Public Sub AddAirfoilNode(this_id As Integer, this_x As Double, this_y As Double) Implements INodeFactory.AddAirfoilNode
-            Dim newNode As INode = New Node(this_id, this_x, this_y, True, False)
+        Public Sub AddAirfoilNode(this_id As Integer, this_x As Double, this_y As Double) Implements IGridFactory.AddAirfoilNode
+            Dim newNode As Node = New Node(this_id, this_x, this_y, True, False)
         End Sub
 
         ''' <summary>
@@ -67,8 +67,8 @@ Namespace Factories
         ''' <param name="this_s1"></param>
         ''' <param name="this_s2"></param>
         ''' <param name="this_s3"></param>
-        Public Sub AddTriangle(this_id As Integer, this_n1 As Integer, this_n2 As Integer, this_n3 As Integer, Optional this_s1 As String = Nothing, Optional this_s2 As String = Nothing, Optional this_s3 As String = Nothing) Implements INodeFactory.AddTriangle
-            Dim newTriangle As ITriangle = New Triangle(this_id, this_n1, this_n2, this_n3, this_s1, this_s2, this_s3)
+        Public Sub AddTriangle(this_id As Integer, this_n1 As Integer, this_n2 As Integer, this_n3 As Integer, Optional this_s1 As String = Nothing, Optional this_s2 As String = Nothing, Optional this_s3 As String = Nothing) Implements IGridFactory.AddTriangle
+            Dim newTriangle As Triangle = New Triangle(this_id, this_n1, this_n2, this_n3, this_s1, this_s2, this_s3)
         End Sub
 
         ''' <summary>
@@ -83,8 +83,8 @@ Namespace Factories
         ''' <param name="this_s1"></param>
         ''' <param name="this_s2"></param>
         ''' <param name="this_s3"></param>
-        Public Sub ReplaceTriangle(t As Integer, newId As Integer, this_n1 As Integer, this_n2 As Integer, this_n3 As Integer, Optional this_s1 As String = Nothing, Optional this_s2 As String = Nothing, Optional this_s3 As String = Nothing) Implements INodeFactory.ReplaceTriangle
-            Dim replacetriangle As ITriangle = New ReplacementTriangle(t, newId, this_n1, this_n2, this_n3, this_s1, this_s2, this_s3)
+        Public Sub ReplaceTriangle(t As Integer, newId As Integer, this_n1 As Integer, this_n2 As Integer, this_n3 As Integer, Optional this_s1 As String = Nothing, Optional this_s2 As String = Nothing, Optional this_s3 As String = Nothing) Implements IGridFactory.ReplaceTriangle
+            Dim replacetriangle As Triangle = New ReplacementTriangle(t, newId, this_n1, this_n2, this_n3, this_s1, this_s2, this_s3)
         End Sub
 
         ''' <summary>
@@ -98,8 +98,8 @@ Namespace Factories
         ''' <param name="this_s1"></param>
         ''' <param name="this_s2"></param>
         ''' <param name="this_s3"></param>
-        Public Sub UpdateTriangle(t As Integer, this_n1 As Integer, this_n2 As Integer, this_n3 As Integer, Optional this_s1 As String = Nothing, Optional this_s2 As String = Nothing, Optional this_s3 As String = Nothing) Implements INodeFactory.UpdateTriangle
-            Dim updateTriangle As ITriangle = New UpdateTriangle(t, this_n1, this_n2, this_n3, this_s1, this_s2, this_s3)
+        Public Sub UpdateTriangle(t As Integer, this_n1 As Integer, this_n2 As Integer, this_n3 As Integer, Optional this_s1 As String = Nothing, Optional this_s2 As String = Nothing, Optional this_s3 As String = Nothing) Implements IGridFactory.UpdateTriangle
+            Dim updateTriangle As Triangle = New UpdateTriangle(t, this_n1, this_n2, this_n3, this_s1, this_s2, this_s3)
         End Sub
 #End Region
 
@@ -109,7 +109,7 @@ Namespace Factories
         ''' Adds first set of nodes to an empty farfield when no airfoil is present
         ''' </summary>
         ''' <param name="farfield"></param>
-        Public Sub SetupEmptySpaceBoundary(farfield As Object) Implements INodeFactory.SetupEmptySpaceBoundary
+        Public Sub SetupEmptySpaceBoundary(farfield As Object) Implements IGridFactory.SetupEmptySpaceBoundary
             'Used for empty space setup
 
             AddCornerNodes(farfield)
@@ -121,7 +121,7 @@ Namespace Factories
         ''' Adds corner nodes to an empty farfield when no airfoil is present
         ''' </summary>
         ''' <param name="farfield"></param>
-        Public Sub AddCornerNodes(farfield As Object) Implements INodeFactory.AddCornerNodes
+        Public Sub AddCornerNodes(farfield As Object) Implements IGridFactory.AddCornerNodes
 
             AddBoundaryNode(0, 0, 0)
             AddBoundaryNode(1, 0, farfield.height)
@@ -134,7 +134,7 @@ Namespace Factories
         ''' Add mid boundary nodes to an empty farfield when no airfoil is present
         ''' </summary>
         ''' <param name="farfield"></param>
-        Public Sub AddMidBoundaryNodes(farfield As Object) Implements INodeFactory.AddMidBoundaryNodes
+        Public Sub AddMidBoundaryNodes(farfield As Object) Implements IGridFactory.AddMidBoundaryNodes
 
             AddBoundaryNode(4, 0, farfield.height / 2)
             AddBoundaryNode(5, farfield.width, farfield.height / 2)
@@ -144,7 +144,7 @@ Namespace Factories
         ''' <summary>
         ''' Creates the first set of grid triangles in a mesh when no airfoil is present
         ''' </summary>
-        Public Sub SetupEmptySpaceTriangles() Implements INodeFactory.SetupEmptySpaceTriangles
+        Public Sub SetupEmptySpaceTriangles() Implements IGridFactory.SetupEmptySpaceTriangles
             'Setup triangles for empty space
             'the vertex ids must correspond to specific node ids
 

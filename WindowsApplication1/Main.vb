@@ -49,7 +49,7 @@ Module Main
         container.Register(Of IScaler, Scaler)()
         container.Register(Of IRedistributor, Redistributor)()
         container.Register(Of IGridBuilder, GridBuilder)()
-        container.Register(Of INodeFactory, NodeFactory)()
+        container.Register(Of IGridFactory, GridFactory)()
 
         'data layer
         container.Register(Of IDataPreparer, DataPreparer)()

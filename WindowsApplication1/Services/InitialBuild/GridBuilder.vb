@@ -10,9 +10,9 @@ Namespace Services
         Private ReadOnly lastv As Integer
 
         Private ReadOnly data As IDataAccessService
-        Private ReadOnly factory As INodeFactory
+        Private ReadOnly factory As IGridFactory
 
-        Public Sub New(data As IDataAccessService, factory As INodeFactory)
+        Public Sub New(data As IDataAccessService, factory As IGridFactory)
 
             Me.data = data
             Me.factory = factory
@@ -262,7 +262,7 @@ Namespace Services
             'Calculates the position of the nodes that create a new layer (all except surface nodes and boundary nodes)
             'Note that in WinForms the Y coordinates are measured from the top of the screen.
 
-            Dim factory As New NodeFactory()
+            Dim factory As New GridFactory()
 
             'calculate straight line distance between adjacent nodes 
             Dim s As Double = NodeDistance(nextn, n)

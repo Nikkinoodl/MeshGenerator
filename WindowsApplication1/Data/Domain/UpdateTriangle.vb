@@ -12,7 +12,7 @@ Namespace Models
         Public Sub New(t As Integer, this_v1 As Integer, this_v2 As Integer, this_v3 As Integer,
 this_s1 As String, this_s2 As String, this_s3 As String)
 
-            Dim this As ITriangle = Repository.Trianglelist(t)
+            Dim this As Triangle = Repository.Trianglelist(t)
 
             this.V1 = this_v1
             this.V2 = this_v2

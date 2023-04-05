@@ -138,8 +138,8 @@
     <Compile Include="Data\Interfaces\IDataAccessService.vb" />
     <Compile Include="Data\Interfaces\IDataPreparer.vb" />
     <Compile Include="Data\Repository\Repository.vb" />
-    <Compile Include="Factory\INodeFactory.vb" />
-    <Compile Include="Factory\NodeFactory.vb" />
+    <Compile Include="Factory\IGridFactory.vb" />
+    <Compile Include="Factory\GridFactory.vb" />
     <Compile Include="Data\Domain\BaseTriangle.vb" />
     <Compile Include="Logic\DelaunayLogic.vb" />
     <Compile Include="Logic\Build.vb" />
@@ -171,7 +171,6 @@
     <Compile Include="Services\MeshRefinement\PostRefining\StatusSetter.vb" />
     <Compile Include="Services\MeshRefinement\PreRefining\TriangleSorter.vb" />
     <Compile Include="Services\MeshRefinement\Refining\TriangleSplitter.vb" />
-    <Compile Include="Data\Domain\Base.vb" />
     <Compile Include="Services\MeshRefinement\PostRefining\BoundaryNodeChecker.vb" />
     <Compile Include="Services\InitialBuild\EmptySpaceBuilder.vb" />
     <Compile Include="Services\FileIO\AirfoilNodeReader.vb" />
@@ -180,17 +179,13 @@
     <Compile Include="Services\MeshCalculations\TriangleCalculator.vb" />
     <Compile Include="Data\Domain\BaseNode.vb" />
     <Compile Include="Common\Settings.vb" />
-    <Compile Include="Data\Interfaces\INode.vb" />
     <Compile Include="Common\ISettings.vb" />
-    <Compile Include="Data\Interfaces\ITriangle.vb" />
-    <Compile Include="Data\Domain\AirfoilNode.vb" />
     <Compile Include="MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
     <Compile Include="MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Data\Domain\BoundaryNode.vb" />
     <Compile Include="Common\CalcDomain.vb" />
     <Compile Include="Data\Domain\Triangle.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

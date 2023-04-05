@@ -2,11 +2,11 @@
 Imports MeshGeneration.Factories
 
 Namespace Services
-    Public Class AirfoilNodeReader : Inherits Base : Implements IAirfoilNodeReader
+    Public Class AirfoilNodeReader : Implements IAirfoilNodeReader
 
-        Private ReadOnly factory As INodeFactory
+        Private ReadOnly factory As IGridFactory
 
-        Public Sub New(factory As INodeFactory)
+        Public Sub New(factory As IGridFactory)
 
             Me.factory = factory
 

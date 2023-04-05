@@ -11,9 +11,9 @@ Namespace Services
         Private s11, s12, s13, s21, s22, s23 As String
 
         Private ReadOnly data As IDataAccessService
-        Private ReadOnly factory As INodeFactory
+        Private ReadOnly factory As IGridFactory
 
-        Public Sub New(data As IDataAccessService, factory As INodeFactory)
+        Public Sub New(data As IDataAccessService, factory As IGridFactory)
 
             Me.data = data
             Me.factory = factory
@@ -285,7 +285,7 @@ Namespace Services
 
         End Function
 
-        Private Sub ProcessAdjacent(configuration As Integer, trianglequery As IEnumerable(Of ITriangle))
+        Private Sub ProcessAdjacent(configuration As Integer, trianglequery As IEnumerable(Of Triangle))
             'Sets np for adjacent triangle
             'This could all be moved to factory, but it is basically the logic behind configuration
 
@@ -308,7 +308,7 @@ Namespace Services
 
         End Sub
 
-        Private Sub FlipTriangles(configuration As Integer, factory As NodeFactory)
+        Private Sub FlipTriangles(configuration As Integer, factory As GridFactory)
             'Calls factory to flip triangles
 
             Select Case configuration

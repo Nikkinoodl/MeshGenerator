@@ -1,5 +1,5 @@
 ﻿Namespace Factories
-    Public Interface INodeFactory
+    Public Interface IGridFactory
         'Interface for the grid element factory
 
         'The node and triangle production line. Should these be defined as INode/ITriangle and use interfaces??

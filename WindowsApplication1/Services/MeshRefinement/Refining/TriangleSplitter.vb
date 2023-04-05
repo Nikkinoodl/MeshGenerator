@@ -8,9 +8,9 @@ Namespace Services
         Private s1, s2, s3, b1, b2, b3 As Boolean
 
         Private ReadOnly data As IDataAccessService
-        Private ReadOnly factory As INodeFactory
+        Private ReadOnly factory As IGridFactory
 
-        Public Sub New(data As IDataAccessService, factory As INodeFactory)
+        Public Sub New(data As IDataAccessService, factory As IGridFactory)
 
             Me.data = data
             Me.factory = factory

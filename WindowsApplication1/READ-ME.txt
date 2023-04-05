@@ -84,12 +84,12 @@ enable faster drawing of the mesh.
 
 4.0 Suggested Improvements
 ===========================
-Spline fitting for new nodes on the airfoil surface (currently they are placed at the midpoint of the adjacent nodes).
+Spline fitting for new nodes on the airfoil surface (currently they are placed at the midpoint of the adjacent nodes). Note that
+in most engineering applications, moving, adding or replacing nodes on the surface of an airfoil which does not have
+a regular geometrical shape (like a turbine blade or wing airfoil) would be severely constrained.
 
 Methods for node redistribution inside the farfield to improve mesh quality.
 
-Simplify and refine the InCircle function within Delaunay.vb
-
-Use OpenCL to speed up calculations.
+Simplify and refine the InCircle function within Delaunay.vb to make it faster
 
 Write mesh to an external file or database.

@@ -3,9 +3,9 @@
 Namespace Services
     Public Class EmptySpaceBuilder : Implements IEmptySpaceBuilder
 
-        Private ReadOnly factory As INodeFactory
+        Private ReadOnly factory As IGridFactory
 
-        Public Sub New(factory As INodeFactory)
+        Public Sub New(factory As IGridFactory)
 
             Me.factory = factory
 

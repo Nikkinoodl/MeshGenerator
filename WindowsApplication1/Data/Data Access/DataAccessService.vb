@@ -9,15 +9,15 @@ Namespace Data
         End Sub
 
         'Use this property for sort, count, etc.
-        Public Property Trianglelist As List(Of ITriangle) = Repository.Trianglelist Implements IDataAccessService.Trianglelist
+        Public Property Trianglelist As List(Of Triangle) = Repository.Trianglelist Implements IDataAccessService.Trianglelist
 
         'Use this property for sort, count, etc.
-        Public Property Nodelist As List(Of INode) = Repository.Nodelist Implements IDataAccessService.Nodelist
+        Public Property Nodelist As List(Of Node) = Repository.Nodelist Implements IDataAccessService.Nodelist
 
         Public Function MaxTriangleId() As Integer Implements IDataAccessService.MaxTriangleId
             'Returns the maximum triangle Id
 
-            Dim thisId = (From triangle As ITriangle In Repository.Trianglelist
+            Dim thisId = (From triangle As Triangle In Repository.Trianglelist
                           Select triangle.Id).Max()
             Return thisId
 
@@ -26,7 +26,7 @@ Namespace Data
         Public Function Exists(xp As Double, yp As Double) As Integer Implements IDataAccessService.Exists
             'Checks for an existing node at the given coordinates
 
-            Dim countNode = Aggregate node As INode In Repository.Nodelist
+            Dim countNode = Aggregate node As Node In Repository.Nodelist
                             Where node.X = xp And node.Y = yp
                             Into Count()
             Return countNode
@@ -36,27 +36,27 @@ Namespace Data
         Function FindNode(xp As Double, yp As Double) As Integer Implements IDataAccessService.FindNode
             'Returns the id of an existing node
 
-            Dim n = (From node As INode In Repository.Nodelist
+            Dim n = (From node As Node In Repository.Nodelist
                      Where node.X = xp And node.Y = yp
                      Select node.Id).FirstOrDefault
             Return n
 
         End Function
 
-        Function NodeV(n As Integer) As IEnumerable(Of INode) Implements IDataAccessService.NodeV
+        Function NodeV(n As Integer) As IEnumerable(Of Node) Implements IDataAccessService.NodeV
             'Returns a specific node (as IEnumerable)
 
-            Dim thisNode = From node As INode In Repository.Nodelist
+            Dim thisNode = From node As Node In Repository.Nodelist
                            Where node.Id = n
                            Select node
             Return thisNode
 
         End Function
 
-        Public Function SmoothTriangle(thisnode As Integer) As IEnumerable(Of ITriangle) Implements IDataAccessService.SmoothTriangle
+        Public Function SmoothTriangle(thisnode As Integer) As IEnumerable(Of Triangle) Implements IDataAccessService.SmoothTriangle
             'Returns a list of the triangles that contains a specific node
 
-            Dim thislist = From triangle As ITriangle In Repository.Trianglelist
+            Dim thislist = From triangle As Triangle In Repository.Trianglelist
                            Where triangle.V1 = thisnode Or triangle.V2 = thisnode Or triangle.V3 = thisnode
                            Select triangle
                            Order By triangle.AvgX
@@ -64,20 +64,20 @@ Namespace Data
 
         End Function
 
-        Public Function SmoothNode() As IEnumerable(Of INode) Implements IDataAccessService.SmoothNode
+        Public Function SmoothNode() As IEnumerable(Of Node) Implements IDataAccessService.SmoothNode
             'Returns a list of nodes that are candidates for smoothing. Surface and boundary nodes are excluded
 
-            Dim thislist = From node As INode In Repository.Nodelist
+            Dim thislist = From node As Node In Repository.Nodelist
                            Where node.Boundary = False And node.Surface = False  'nodes on the surface or boundary aren't moved
                            Select node
             Return thislist
 
         End Function
 
-        Public Function BoundaryNode(farfield As Object) As IEnumerable(Of INode) Implements IDataAccessService.BoundaryNode
+        Public Function BoundaryNode(farfield As Object) As IEnumerable(Of Node) Implements IDataAccessService.BoundaryNode
             'Returns a list of all nodes that are on the boundary of the farfield
 
-            Dim boundarynodes = From node As INode In Repository.Nodelist
+            Dim boundarynodes = From node As Node In Repository.Nodelist
                                 Where node.X = 0 Or node.X = farfield.width Or node.Y = 0 Or node.Y = farfield.height And node.Boundary = False
                                 Select node
             Return boundarynodes
@@ -86,7 +86,7 @@ Namespace Data
 
         Public Sub CheckBoundaryNode(farfield As Object) Implements IDataAccessService.CheckBoundaryNode
             'Ensures that all nodes on the boundary have the correct attribute
-            'It was easier to implement this here rather than in NodeFactory
+            'It was easier to implement this here rather than in GridFactory
 
             For Each node In BoundaryNode(farfield)
                 node.Boundary = True
@@ -102,7 +102,7 @@ Namespace Data
 
         End Sub
 
-        Public Function Trianglequery(configuration As Integer, n1 As Integer, n2 As Integer, n3 As Integer) As IEnumerable(Of ITriangle) Implements IDataAccessService.Trianglequery
+        Public Function Trianglequery(configuration As Integer, n1 As Integer, n2 As Integer, n3 As Integer) As IEnumerable(Of Triangle) Implements IDataAccessService.Trianglequery
             'Returns a list of triangles for use in Delaunay triangulation
 
             Dim basequery = Repository.Trianglelist
@@ -129,7 +129,7 @@ Namespace Data
 
         End Function
 
-        Function EdgeBoundary(edge As String, farfield As Object) As IOrderedEnumerable(Of INode) Implements IDataAccessService.EdgeBoundary
+        Function EdgeBoundary(edge As String, farfield As Object) As IOrderedEnumerable(Of Node) Implements IDataAccessService.EdgeBoundary
             'Returns an ordered list of nodes on the top edge of the farfield boundary
             'Excludes the corner nodes
 

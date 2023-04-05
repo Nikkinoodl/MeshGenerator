@@ -1,13 +1,13 @@
 ﻿Namespace Models
-    Public MustInherit Class BaseNode : Inherits Base : Implements INode
+    Public MustInherit Class BaseNode
 
 #Region "public properties"
-        Public Property Id As Integer Implements INode.Id
-        Public Property X As Double Implements INode.X
-        Public Property Y As Double Implements INode.Y
-        Public Property Surface As Boolean Implements INode.Surface
-        Public Property Boundary As Boolean Implements INode.Boundary
-        Public Property Te_posn As Boolean Implements INode.Te_posn
+        Public Property Id As Integer
+        Public Property X As Double
+        Public Property Y As Double
+        Public Property Surface As Boolean
+        Public Property Boundary As Boolean
+        Public Property Te_posn As Boolean
 #End Region
 
     End Class
